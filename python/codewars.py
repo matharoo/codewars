@@ -814,5 +814,65 @@ def howmuch(m, n):
 # howmuch(10000, 9950)
 # howmuch(0, 200)
 # howmuch(2950, 2950)
-print(howmuch(20000, 20100))
+# print(howmuch(20000, 20100))
 
+def permutations(string):
+    print(string[1:])
+    arr= set()
+    if len(string) <=1:
+        arr.add(string)
+    else:
+        for sliced in permutations(string[1:]): # slice string after one char
+            for i in range(len(string)):
+                print(sliced,i,' : ',sliced[:i])
+                print(sliced,i,' : ',sliced[i:])
+                arr.add(sliced[:i] + string[0:1] + sliced[i:])
+    arr = list(arr)
+    arr.sort()
+    return arr
+    
+
+# permutations('a') # ['a']
+# print(permutations('ab'))
+# print(permutations('aabb'))
+
+def dbl_linear(n):
+    arr=[1]
+    x=0
+    y=0
+    while len(arr)<=n:
+        i=(2*arr[x])+1
+        j=(3*arr[y])+1
+        if(i>j):
+            arr.append(j)
+            y=y+1
+        elif i<j:
+            arr.append(i)
+            x+=1
+        else:
+            arr.append(i)
+            x+=1
+            y+=1
+    return arr[n]
+
+# print(dbl_linear(10))
+# dbl_linear(50)
+
+import itertools
+def next_bigger(n):
+    arr = set()
+    n = str(n)
+    perms = set(itertools.permutations(str(n)))
+    print(perms)
+    for i in perms:
+        current = int(''.join(i))
+        if(current>int(n)):
+            arr.add(current)
+    # print(min(arr))
+    return min(arr)
+    
+
+# print(next_bigger(122))
+print(next_bigger(4365))
+
+# https://stackoverflow.com/questions/9368205/given-a-number-find-the-next-higher-number-which-has-the-exact-same-set-of-digi
