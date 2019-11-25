@@ -873,6 +873,85 @@ def next_bigger(n):
     
 
 # print(next_bigger(122))
-print(next_bigger(4365))
+# print(next_bigger(4365))
 
 # https://stackoverflow.com/questions/9368205/given-a-number-find-the-next-higher-number-which-has-the-exact-same-set-of-digi
+
+# class Primes:
+#     @staticmethod
+#     def stream():
+#         print("generating primes")
+#         count = 3
+#         i=0
+#         while count<10:
+#             isprime = True
+#             for x in range(2, int(math.sqrt(count) + 1)):
+#                 if count % x == 0: 
+#                     isprime = False
+#                     break
+#             if isprime:
+#                 print(count)
+#             count += 1
+
+
+
+# stream = Primes.stream()
+
+
+def namelist(names):
+    print(names[-1]['name'])
+    ct = len(names)
+    allnames= ""
+    if(ct==1): return names[0]['name']
+    for i,x in enumerate(names):
+        # print(i,x['name'])
+        if(i<ct-1 and ct>=2):
+            allnames += x['name']+", "
+        elif (i>=1 and ct>=2):
+            allnames = allnames[:-2]
+            allnames += " & " + x['name']
+        # elif (i==2)
+    return allnames
+    # if len(names) > 1:
+    #     return '{} & {}'.format(', '.join(name['name'] for name in names[:-1]), 
+    #                             names[-1]['name'])
+    # elif names:
+    #     return names[0]['name']
+    # else:
+    #     return ''
+
+# print(namelist([{'name': 'Bart'},{'name': 'Lisa'},{'name': 'Maggie'},{'name': 'Homer'},{'name': 'Marge'},{'name': 'Gucci'}]))
+# print(namelist([{'name': 'Bart'},{'name': 'Lisa'},{'name': 'Maggie'}]))
+# print(namelist([{'name': 'Bart'},{'name': 'Lisa'}]))
+# print(namelist([{'name': 'Bart'}]))
+# print(namelist([]))
+
+def openOrSenior(data):
+    print(data)
+    return ['Senior' if i[0]>=55 and i[1]>7 else 'Open' for i in data]
+
+# print(openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]))
+
+def xo(s):
+    return True if s.lower().count('o')==s.lower().count('x') else False
+
+# print(xo('xo0'))
+# print(xo('xOOxxxOOOxxxOOxOxxxxxxxxOOOxOxxOxxOAOOOxOOOxxOxOOOO'))
+
+
+def find_smallest_int(arr):
+    return min(arr)
+
+# print(find_smallest_int([78, 56, 232, 12, 11, 43]))
+
+def filter_list(l):
+    return list(filter(lambda x: type(x)==int,l))
+
+# print(filter_list([1,2,'a','b']))
+
+def make_negative( number ):
+    return -(number) if number >=0 else number
+
+print(make_negative(42))
+print(make_negative(0))
+print(make_negative(1))
