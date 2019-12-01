@@ -3377,3 +3377,57 @@ function domainName(url){
 // console.log(domainName("http://www.google.co.jp"));
 // console.log(domainName("www.xakep.ru"));
 // console.log(domainName("https://youtube.com"));
+
+
+//Object Extend:
+var extend = function(...args) {
+  let hash = {}
+  args.forEach((v)=>{
+    if(typeof v ==='object'){
+      Object.keys(v).forEach((x)=>{
+        if(hash[x]===undefined){
+            hash[x] = v[x]
+        }
+      })
+    }
+    
+  })
+  return hash
+  // or just a simple
+  // return Object.assign({}, ...args.filter(Object.isObject).reverse());
+}
+
+// console.log(extend( {a: 1, b: 2}, {c: 3} ))
+// console.log(extend( {a: 1, b: 2}, {c: 3}, {d: 4} ))
+// console.log(extend( {a: 1, b: 2}, {a: 3, c: 3} ))
+// console.log(extend({ a: 1, b: 2, length: 6 },
+//   [],
+//   'nope',
+//   false,
+//   [Function],
+//   { c: 3, a: 3 }))
+// console.log(extend({ a: false, b: null, c: 3 }, { a: true, b: 1 }))
+
+class GroupByDifference {
+  constructor(numbers){
+    this.numbers = numbers
+  }
+
+  find(diff){
+    let withinrange=[]
+    this.numbers.forEach((v)=>{
+      console.log(v)
+      for(i=v-diff;i<v;i++){
+        console.log(i)
+        if(this.numbers.indexOf(i)!=-1){
+          withinrange.push(this.numbers[this.numbers.indexOf(i)])
+        }
+      }
+    })
+    return withinrange
+  }
+}
+
+var numbers = [5, 32, 5, 1, 31, 70, 30, 8];
+
+console.log(new GroupByDifference(numbers).find(3))
